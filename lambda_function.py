@@ -4,7 +4,7 @@ from keras_image_helper import create_preprocessor
 
 preprocessor = create_preprocessor('xception', target_size=(150, 150))
 
-interpreter = tflite.Interpreter(model_path='xception_v1_07_0.839.tflite')
+interpreter = tflite.Interpreter(model_path='model_X.tflite')
 interpreter.allocate_tensors()
 
 input_index = interpreter.get_input_details()[0]['index']
@@ -17,14 +17,12 @@ def predict(url):
     interpreter.set_tensor(input_index, X)
     interpreter.invoke()
     pred = interpreter.get_tensor(output_index)
+    float_pred =  pred.tolist()
 
-    def eval_img(pred):
-        if pred >= 0.5:
-            print('Crack detected')
-        else:
-            print('No cracks')
 
-    return (pred, eval_img)
+    return (float_pred)
+
+
 
 def lambda_handler(event, context):
     url = event['url']
