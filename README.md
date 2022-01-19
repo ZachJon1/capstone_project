@@ -2,8 +2,7 @@
 # Capstone Project: Structures Crack Detection
 
 This project uses a mordified Xception Keras application to detect crack in structures. The model is currently trained on more than 20000+ images of cracks in concrete structures and no cracks in concrete.
-The model returns a value between one and zero. The closer to one the value, the higher the accuracy of an actual crack being detected. Hence, values mostly greater than or equal to one means a crack has been detected.
-A value less than 0.5 means no crack was detected in the image. This was implemented in the juypter notebook. Due to time only the values are returned in the Lambda function. 
+The model returns a value between one and zero. The closer to one the value, the higher the accuracy of an actual crack being detected. Hence, values greater than  0.5 or equal to one means a crack has been detected. A value less than 0.5 means no crack was detected in the image. This was implemented in the juypter notebook.  
  
 
 ## Acknowledgements
